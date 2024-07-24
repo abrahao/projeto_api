@@ -1,0 +1,22 @@
+FROM node:18
+
+# Diretório de trabalho dentro do container
+WORKDIR /usr/src/app
+
+# Copiar arquivos de configuração do Angular
+COPY frontend/package*.json ./
+
+# Instalar as dependências do Angular
+RUN npm install
+
+# Copiar o restante dos arquivos do projeto
+COPY frontend/ .
+
+# Instalar o Angular CLI globalmente
+RUN npm install -g @angular/cli
+
+# Expor a porta que o Angular usará
+EXPOSE 4200
+
+# Comando para iniciar o servidor de desenvolvimento do Angular
+CMD ["ng", "serve", "--host", "0.0.0.0"]

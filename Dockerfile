@@ -1,6 +1,6 @@
 FROM php:8.1-fpm
 
-# Instalar as ependências necessárias
+# Instalar dependências necessárias
 RUN apt-get update && apt-get install -y \
     unzip \
     libpq-dev \
@@ -10,23 +10,20 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Extensões do PHP
+# Instalar extensões do PHP
 RUN docker-php-ext-install pdo pdo_pgsql
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Symfony CLI
+# Instalar Symfony CLI
 RUN curl -sS https://get.symfony.com/cli/installer | bash \
     && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
 
-# Diretório de trabalho
-WORKDIR /var/www/projeto-vox
-
-# Diretório de trabalho para o projeto Symfony
+# Configurar o diretório de trabalho
 WORKDIR /var/www/projeto-vox/backend
 
-# Adiciona dependências adicionais ao Composer
+# Adicionar dependências adicionais ao Composer
 RUN composer require \
     symfony/orm-pack \
     symfony/maker-bundle \
@@ -37,10 +34,10 @@ RUN composer require \
     twig/twig \
     nelmio/api-doc-bundle
 
-# Limpa o cache do Composer
+# Limpar o cache do Composer
 RUN composer clear-cache
 
-# Verifica se os pacotes foram instalados corretamente
+# Verificar se os pacotes foram instalados corretamente
 RUN composer show twig/twig
 
 # Instalar Node.js 18
@@ -51,8 +48,8 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
 # Instalar o Angular CLI
 RUN npm install -g @angular/cli@latest
 
-# Porta 9000 para o PHP-FPM
+# Expor a porta 9000 para o PHP-FPM
 EXPOSE 9000
 
-# Inicia o PHP-FPM
+# Iniciar o PHP-FPM
 CMD ["php-fpm"]
