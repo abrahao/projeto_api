@@ -9,7 +9,7 @@ O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de e
 - **Symfony Framework**: Framework PHP para desenvolvimento web.
 - **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
 - **Doctrine ORM**: Mapeamento objeto-relacional para PHP.
-- **[Frontend a ser definido]**
+- **[Frontend com Angular]**
 - **Docker**: Contêineres para desenvolvimento e execução da aplicação.
 
 ## Pré-requisitos
@@ -20,18 +20,3 @@ O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de e
 - **PostgreSQL**
 
 ## Estrutura do Projeto
-
-- **/app**: Contém o código da aplicação PHP (Symfony).
-- **/db**: Contém os dados do banco de dados PostgreSQL.
-- **/web**: Contém o servidor Nginx para servir a aplicação web.
-
-## Configuração
-
-1. **Clonar o Repositório**
-   
-   Clone este repositório para o seu ambiente local:
-   
-   ```bash
-   git clone https://github.com/seu-usuario/projeto-vox.git
-   cd projeto-vox
-   ```
