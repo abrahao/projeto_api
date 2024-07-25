@@ -1,0 +1,11 @@
+{# templates/empresa/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Criar Nova Empresa</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">Salvar</button>
+    {{ form_end(form) }}
+{% endblock %}

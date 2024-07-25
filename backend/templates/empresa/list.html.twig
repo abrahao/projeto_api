@@ -1,0 +1,35 @@
+{# templates/empresa/list.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Empresas{% endblock %}
+
+{% block body %}
+    <h1>Lista de Empresas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CNPJ</th>
+                <th>Endereço</th>
+                <th>Telefone</th>
+                <th>Data de Criação</th>
+                <th>Data de Atualização</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empresa in empresas %}
+                <tr>
+                    <td>{{ empresa.id }}</td>
+                    <td>{{ empresa.nome }}</td>
+                    <td>{{ empresa.cnpj }}</td>
+                    <td>{{ empresa.endereco }}</td>
+                    <td>{{ empresa.telefone }}</td>
+                    <td>{{ empresa.createdAt|date('Y-m-d H:i:s') }}</td>
+                    <td>{{ empresa.updatedAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
