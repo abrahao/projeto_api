@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\EmpresaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ApiResource]
 #[ORM\Entity(repositoryClass: EmpresaRepository::class)]
 class Empresa
 {
@@ -39,8 +41,6 @@ class Empresa
     public function __construct()
     {
         $this->socios = new ArrayCollection();
-        $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -113,12 +113,13 @@ class Empresa
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt = null): static
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
+
     /**
      * @return Collection<int, Socio>
      */
