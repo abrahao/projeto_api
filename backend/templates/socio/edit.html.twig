@@ -1,0 +1,17 @@
+{# templates/socio/edit.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Socio</title>
+</head>
+<body>
+    <h1>Editar Socio</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Salvar</button>
+    {{ form_end(form) }}
+    <a href="{{ path('app_socio_list') }}">Voltar</a>
+</body>
+</html>

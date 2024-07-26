@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>List of Socios</h1>
+    <a href="{{ path('app_socio') }}">Voltar a Home</a>
+    <ul>
+        {% for socio in socios %}
+            <li>
+                {{ socio.nome }} - {{ socio.cpf }} - {{ socio.telefone }} - {{ socio.empresa.nome }}
+            </li>
+        {% else %}
+            <li>Socios encontrados.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
