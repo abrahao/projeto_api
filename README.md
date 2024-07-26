@@ -2,21 +2,78 @@
 
 ## Descrição
 
-O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento, incluindo a arquitetura SOLID.
+O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento, incluindo a arquitetura SOLID. 
 
 ## Tecnologias Utilizadas
 
 - **Symfony Framework**: Framework PHP para desenvolvimento web.
 - **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
 - **Doctrine ORM**: Mapeamento objeto-relacional para PHP.
-- **[Frontend com Angular]**
-- **Docker**: Contêineres para desenvolvimento e execução da aplicação.
+- **Angular**: Framework para desenvolvimento do frontend.
+- **Docker**: Plataforma para desenvolvimento e execução de contêineres.
 
 ## Pré-requisitos
+
+Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 
 - **PHP 8.1+**
 - **Composer**
 - **Docker** e **Docker Compose**
 - **PostgreSQL**
 
-## Estrutura do Projeto
+## Configuração do Ambiente
+
+1. **Iniciar o ambiente com Docker**:
+
+   Execute o comando abaixo para criar e iniciar os contêineres necessários para o projeto:
+   ```bash
+   docker-compose up --build
+   ```
+
+2. **Acessar o contêiner da aplicação**:
+
+   Entre no contêiner da aplicação com o comando:
+   ```bash
+   docker exec -it symfony_app bash
+   ```
+
+3. **Executar as migrações do banco de dados**:
+
+   No contêiner da aplicação, execute as migrações do banco de dados:
+   ```bash
+   php bin/console doctrine:migrations:migrate
+   ```
+
+## Rotas da Aplicação
+
+### CRUD de Empresas
+
+- **Listar Empresas**: `/empresas`
+- **Criar Nova Empresa**: `/empresas/new`
+- **Listar Empresas (Visualização)**: `/empresas/list`
+- **Editar Empresa**: `/empresas/{id}/edit`
+- **Excluir Empresa**: `/empresas/delete/{id}`
+
+### CRUD de Sócios
+
+- **Listar Sócios**: `/socio`
+- **Criar Novo Sócio**: `/socio/new`
+- **Listar Sócios (Visualização)**: `/socio/list`
+- **Editar Sócio**: `/socio/{id}/edit`
+- **Excluir Sócio**: `/socios/delete/{id}`
+
+## API (Ainda em Desenvolvimento)
+
+### Rotas para Empresas
+
+- **Obter Empresa por ID**: `/api/empresas/{id}.{_format}`
+- **Listar Empresas**: `/api/empresas.{_format}`
+- **Listar Empresas (Sem Formato)**: `/api/empresas`
+- **Obter Empresa por ID (Sem Formato)**: `/api/empresas/{id}`
+
+### Rotas para Sócios
+
+- **Obter Sócio por ID**: `/api/socios/{id}.{_format}`
+- **Listar Sócios**: `/api/socios.{_format}`
+- **Listar Sócios (Sem Formato)**: `/api/socios`
+- **Obter Sócio por ID (Sem Formato)**: `/api/socios/{id}`
