@@ -32,7 +32,7 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 
 2. **Acessar o contêiner da aplicação**:
 
-   Entre no contêiner da aplicação com o comando:
+   Em outro terminal (ou aba), entre no contêiner da aplicação com o comando:
    ```bash
    docker exec -it symfony_app bash
    ```
