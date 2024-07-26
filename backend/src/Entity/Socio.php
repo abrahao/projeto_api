@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Entity;
 
 use App\Repository\SocioRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SocioRepository::class)]
 class Socio
@@ -11,26 +11,34 @@ class Socio
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['socios:read', 'socios:write'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['socios:read', 'socios:write'])]
     private ?string $nome = null;
 
     #[ORM\Column(length: 11)]
+    #[Groups(['socios:read', 'socios:write'])]
     private ?string $cpf = null;
 
     #[ORM\Column(length: 20, nullable: true)]
+    #[Groups(['socios:read', 'socios:write'])]
     private ?string $telefone = null;
 
     #[ORM\ManyToOne(inversedBy: 'socios')]
+    #[Groups(['socios:read', 'socios:write'])]
     private ?Empresa $empresa = null;
 
     #[ORM\Column]
+    #[Groups(['socios:read', 'socios:write'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
+    #[Groups(['socios:read', 'socios:write'])]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    // Getters and Setters
     public function getId(): ?int
     {
         return $this->id;
@@ -44,7 +52,6 @@ class Socio
     public function setNome(string $nome): static
     {
         $this->nome = $nome;
-
         return $this;
     }
 
@@ -56,7 +63,6 @@ class Socio
     public function setCpf(string $cpf): static
     {
         $this->cpf = $cpf;
-
         return $this;
     }
 
@@ -68,7 +74,6 @@ class Socio
     public function setTelefone(?string $telefone): static
     {
         $this->telefone = $telefone;
-
         return $this;
     }
 
@@ -80,7 +85,6 @@ class Socio
     public function setEmpresa(?Empresa $empresa): static
     {
         $this->empresa = $empresa;
-
         return $this;
     }
 
@@ -92,7 +96,6 @@ class Socio
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 
@@ -104,7 +107,6 @@ class Socio
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller\Api;
 
 use App\Entity\Empresa;
@@ -17,7 +16,7 @@ class SocioApiController extends AbstractController
     public function index(EntityManagerInterface $entityManager): JsonResponse
     {
         $socios = $entityManager->getRepository(Socio::class)->findAll();
-        return $this->json($socios);
+        return $this->json($socios, 200, [], ['groups' => 'socios:read']);
     }
 
     #[Route('', name: 'create', methods: ['POST'])]
@@ -29,7 +28,6 @@ class SocioApiController extends AbstractController
         $socio->setNome($data['nome']);
         $socio->setCpf($data['cpf']);
         $socio->setTelefone($data['telefone'] ?? null);
-        // Assuming the empresa is provided in the request and exists
         $empresa = $entityManager->getRepository(Empresa::class)->find($data['empresa_id']);
         $socio->setEmpresa($empresa);
         $socio->setCreatedAt(new \DateTimeImmutable());
@@ -38,13 +36,13 @@ class SocioApiController extends AbstractController
         $entityManager->persist($socio);
         $entityManager->flush();
 
-        return $this->json($socio, 201);
+        return $this->json($socio, 201, [], ['groups' => 'socios:read']);
     }
 
     #[Route('/{id}', name: 'show', methods: ['GET'])]
     public function show(Socio $socio): JsonResponse
     {
-        return $this->json($socio);
+        return $this->json($socio, 200, [], ['groups' => 'socios:read']);
     }
 
     #[Route('/{id}', name: 'update', methods: ['PUT'])]
@@ -55,14 +53,13 @@ class SocioApiController extends AbstractController
         $socio->setNome($data['nome']);
         $socio->setCpf($data['cpf']);
         $socio->setTelefone($data['telefone'] ?? null);
-        // Assuming the empresa is provided in the request and exists
         $empresa = $entityManager->getRepository(Empresa::class)->find($data['empresa_id']);
         $socio->setEmpresa($empresa);
         $socio->setUpdatedAt(new \DateTimeImmutable());
 
         $entityManager->flush();
 
-        return $this->json($socio);
+        return $this->json($socio, 200, [], ['groups' => 'socios:read']);
     }
 
     #[Route('/{id}', name: 'delete', methods: ['DELETE'])]
