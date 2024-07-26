@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Sócios{% endblock %}
+
 {% block body %}
     <h1>Sócios</h1>
-    <a href="{{ path('app_socio_new') }}">Cadastrar Novo Socio</a> |
+
+    <a href="{{ path('app_socio_new') }}">Cadastrar Socio</a> |
     <a href="{{ path('app_socio_list') }}">Listar Socios</a>
 {% endblock %}
