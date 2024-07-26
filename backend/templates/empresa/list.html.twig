@@ -1,4 +1,4 @@
-{# templates/empresa/list.html.twig #}
+{# templates/empresa/index.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Lista de Empresas{% endblock %}
@@ -14,8 +14,7 @@
                 <th>CNPJ</th>
                 <th>Endereço</th>
                 <th>Telefone</th>
-                <th>Data de Criação</th>
-                <th>Data de Atualização</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -26,10 +25,18 @@
                     <td>{{ empresa.cnpj }}</td>
                     <td>{{ empresa.endereco }}</td>
                     <td>{{ empresa.telefone }}</td>
-                    <td>{{ empresa.createdAt|date('Y-m-d H:i:s') }}</td>
-                    <td>{{ empresa.updatedAt|date('Y-m-d H:i:s') }}</td>
+                    <td>
+                        <a href="{{ path('app_empresas_edit', {'id': empresa.id}) }}">Editar</a>
+                        <form method="post" action="{{ path('app_empresas_delete', {'id': empresa.id}) }}" style="display:inline-block" onsubmit="return confirm('Tem certeza que deseja excluir esta empresa?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ empresa.id) }}">
+                            <button class="btn btn-danger">Excluir</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('app_empresas_new') }}">Nova Empresa</a>
+    <a href="{{ path('app_empresas') }}">Voltar a Home</a>
 {% endblock %}

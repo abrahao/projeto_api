@@ -50,4 +50,34 @@ class SocioController extends AbstractController
             'socios' => $socios,
         ]);
     }
+
+    #[Route('/socio/{id}/edit', name: 'app_socio_edit')]
+    public function edit(Request $request, EntityManagerInterface $entityManager, Socio $socio): Response
+    {
+        $form = $this->createForm(SocioType::class, $socio);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_socio');
+        }
+
+        return $this->render('socio/edit.html.twig', [
+            'form' => $form->createView(),
+            'socio' => $socio,
+        ]);
+    }
+
+    #[Route('/socios/delete/{id}', name: 'app_socios_delete', methods: ['POST'])]
+    public function delete(Request $request, Socio $socio, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$socio->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($socio);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_socio');
+    }
+
 }

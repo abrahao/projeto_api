@@ -1,15 +1,42 @@
+{# templates/socio/index.html.twig #}
 {% extends 'base.html.twig' %}
 
+{% block title %}Lista de Sócios{% endblock %}
+
 {% block body %}
-    <h1>List of Socios</h1>
+    <h1>Lista de Sócios</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Empresa</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for socio in socios %}
+                <tr>
+                    <td>{{ socio.id }}</td>
+                    <td>{{ socio.nome }}</td>
+                    <td>{{ socio.cpf }}</td>
+                    <td>{{ socio.telefone }}</td>
+                    <td>{{ socio.empresa ? socio.empresa.nome : 'N/A' }}</td>
+                    <td>
+                        <a href="{{ path('app_socio_edit', {'id': socio.id}) }}">Editar</a>
+                        <form method="post" action="{{ path('app_socios_delete', {'id': socio.id}) }}" style="display:inline-block" onsubmit="return confirm('Tem certeza que deseja excluir este sócio?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socio.id) }}">
+                            <button class="btn btn-danger">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_socio_new') }}">Novo Sócio</a>
     <a href="{{ path('app_socio') }}">Voltar a Home</a>
-    <ul>
-        {% for socio in socios %}
-            <li>
-                {{ socio.nome }} - {{ socio.cpf }} - {{ socio.telefone }} - {{ socio.empresa.nome }}
-            </li>
-        {% else %}
-            <li>Socios encontrados.</li>
-        {% endfor %}
-    </ul>
 {% endblock %}

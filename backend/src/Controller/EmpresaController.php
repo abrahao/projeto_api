@@ -53,4 +53,34 @@ class EmpresaController extends AbstractController
             'empresas' => $empresas,
         ]);
     }
+
+    #[Route('/empresas/{id}/edit', name: 'app_empresas_edit')]
+    public function edit(Request $request, EntityManagerInterface $entityManager, Empresa $empresa): Response
+    {
+        $form = $this->createForm(EmpresaType::class, $empresa);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_empresas');
+        }
+
+        return $this->render('empresa/edit.html.twig', [
+            'form' => $form->createView(),
+            'empresa' => $empresa,
+        ]);
+    }
+
+    #[Route('/empresas/delete/{id}', name: 'app_empresas_delete', methods: ['POST'])]
+    public function delete(Request $request, Empresa $empresa, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$empresa->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($empresa);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_empresas');
+    }
+
 }

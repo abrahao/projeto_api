@@ -1,4 +1,7 @@
+{# templates/empresa/edit.html.twig #}
 {% extends 'base.html.twig' %}
+
+{% block title %}Editar Empresa{% endblock %}
 
 {% block body %}
     <h1>Editar Empresa</h1>
@@ -7,4 +10,6 @@
         {{ form_widget(form) }}
         <button class="btn">Salvar</button>
     {{ form_end(form) }}
+
+    <a href="{{ path('app_empresas') }}">Voltar</a>
 {% endblock %}
