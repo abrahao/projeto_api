@@ -35,6 +35,7 @@ USER appuser
 RUN composer install --no-scripts --no-suggest --no-interaction --no-plugins
 
 RUN composer require symfony/form:^6.2
+RUN composer require symfony/serializer
 
 # Copia o arquivo de configuração customizado do Apache
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
