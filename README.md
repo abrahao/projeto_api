@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento, incluindo a arquitetura SOLID.
+O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento.
 
 ## Tecnologias Utilizadas
 
