@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento, incluindo a arquitetura SOLID. 
+O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento, incluindo a arquitetura SOLID.
 
 ## Tecnologias Utilizadas
 
@@ -23,21 +23,27 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 
 ## Configuração do Ambiente
 
-1. **Iniciar o ambiente com Docker**:
+1. **Clone o projeto**:
 
-   Execute o comando abaixo para criar e iniciar os contêineres necessários para o projeto:
+   ```bash
+   git clone git@github.com:abrahao/Projeto-Vox.git
+   ```
+
+2. **Inicie o ambiente com Docker**:
+
+   Navegue até o diretório do projeto e execute o comando abaixo para criar e iniciar os contêineres necessários para o projeto:
    ```bash
    docker-compose up --build
    ```
 
-2. **Acessar o contêiner da aplicação**:
+3. **Acesse o contêiner da aplicação**:
 
    Em outro terminal (ou aba), entre no contêiner da aplicação com o comando:
    ```bash
    docker exec -it symfony_app bash
    ```
 
-3. **Executar as migrações do banco de dados**:
+4. **Execute as migrações do banco de dados**:
 
    No contêiner da aplicação, execute as migrações do banco de dados:
    ```bash
