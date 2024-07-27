@@ -1,0 +1,15 @@
+{# templates/home/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Bem-vindo à Aplicação de Gestão Societária</h1>
+    <p>Esta aplicação permite gerenciar empresas e sócios de forma eficiente e organizada.</p>
+
+    <h2>Links Rápidos</h2>
+    <ul>
+        <li><a href="{{ path('app_empresas') }}">Gerenciar Empresas</a></li>
+        <li><a href="{{ path('app_socio') }}">Gerenciar Sócios</a></li>
+    </ul>
+{% endblock %}
