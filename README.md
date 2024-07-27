@@ -1,7 +1,3 @@
-Claro, aqui está o README ajustado:
-
----
-
 # Projeto Vox
 
 ## Descrição
@@ -34,10 +30,16 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 2. **Navegue até o diretório do projeto**:
 
    ```bash
-   cd Projeto-Vox
+   cd Projeto-Vox/backend
    ```
 
-3. **Inicie o ambiente com Docker**:
+3. **Instale as dependências com o Composer**:
+
+   ```bash
+   composer install
+   ```
+
+4. **Inicie o ambiente com Docker**:
 
    Crie e inicie os contêineres necessários para o projeto:
 
@@ -45,7 +47,7 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
    docker-compose up --build
    ```
 
-4. **Acesse o contêiner da aplicação**:
+5. **Acesse o contêiner da aplicação**:
 
    Em outro terminal, entre no contêiner da aplicação:
 
@@ -53,7 +55,7 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
    docker exec -it symfony_app bash
    ```
 
-5. **Execute as migrações do banco de dados**:
+6. **Execute as migrações do banco de dados**:
 
    No contêiner da aplicação, execute as migrações do banco de dados:
 
@@ -94,7 +96,3 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 - **Listar Sócios**: `/api/socios.{_format}`
 - **Listar Sócios (Sem Formato)**: `/api/socios`
 - **Obter Sócio por ID (Sem Formato)**: `/api/socios/{id}`
-
----
-
-Se precisar de mais ajustes, é só falar!
