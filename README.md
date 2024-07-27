@@ -1,8 +1,12 @@
+Claro, aqui está o README ajustado:
+
+---
+
 # Projeto Vox
 
 ## Descrição
 
-O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento.
+O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de empresas e o gerenciamento do seu quadro societário. A aplicação utiliza PostgreSQL como banco de dados e é estruturada para seguir boas práticas de desenvolvimento, incluindo a arquitetura SOLID.
 
 ## Tecnologias Utilizadas
 
@@ -18,7 +22,6 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 - **PHP 8.1+**
 - **Composer**
 - **Docker** e **Docker Compose**
-- **PostgreSQL**
 
 ## Configuração do Ambiente
 
@@ -28,23 +31,32 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
    git clone git@github.com:abrahao/Projeto-Vox.git
    ```
 
-2. **Inicie o ambiente com Docker**:
+2. **Navegue até o diretório do projeto**:
 
-   Navegue até o diretório do projeto e execute o comando abaixo para criar e iniciar os contêineres necessários para o projeto:
+   ```bash
+   cd Projeto-Vox
+   ```
+
+3. **Inicie o ambiente com Docker**:
+
+   Crie e inicie os contêineres necessários para o projeto:
+
    ```bash
    docker-compose up --build
    ```
 
-3. **Acesse o contêiner da aplicação**:
+4. **Acesse o contêiner da aplicação**:
 
-   Em outro terminal (ou aba), entre no contêiner da aplicação com o comando:
+   Em outro terminal, entre no contêiner da aplicação:
+
    ```bash
    docker exec -it symfony_app bash
    ```
 
-4. **Execute as migrações do banco de dados**:
+5. **Execute as migrações do banco de dados**:
 
    No contêiner da aplicação, execute as migrações do banco de dados:
+
    ```bash
    php bin/console doctrine:migrations:migrate
    ```
@@ -55,7 +67,7 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 
 - **Listar Empresas**: `/empresas`
 - **Criar Nova Empresa**: `/empresas/new`
-- **Listar Empresas (Visualização)**: `/empresas/list`
+- **Visualizar Empresas**: `/empresas/list`
 - **Editar Empresa**: `/empresas/{id}/edit`
 - **Excluir Empresa**: `/empresas/delete/{id}`
 
@@ -63,9 +75,9 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 
 - **Listar Sócios**: `/socio`
 - **Criar Novo Sócio**: `/socio/new`
-- **Listar Sócios (Visualização)**: `/socio/list`
+- **Visualizar Sócios**: `/socio/list`
 - **Editar Sócio**: `/socio/{id}/edit`
-- **Excluir Sócio**: `/socios/delete/{id}`
+- **Excluir Sócio**: `/socio/delete/{id}`
 
 ## API (Ainda em Desenvolvimento)
 
@@ -82,3 +94,7 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 - **Listar Sócios**: `/api/socios.{_format}`
 - **Listar Sócios (Sem Formato)**: `/api/socios`
 - **Obter Sócio por ID (Sem Formato)**: `/api/socios/{id}`
+
+---
+
+Se precisar de mais ajustes, é só falar!
