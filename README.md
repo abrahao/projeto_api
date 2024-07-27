@@ -9,7 +9,6 @@ O Projeto Vox é um sistema desenvolvido com Symfony que permite o cadastro de e
 - **Symfony Framework**: Framework PHP para desenvolvimento web.
 - **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
 - **Doctrine ORM**: Mapeamento objeto-relacional para PHP.
-- **Angular**: Framework para desenvolvimento do frontend.
 - **Docker**: Plataforma para desenvolvimento e execução de contêineres.
 
 ## Pré-requisitos
