@@ -1,7 +1,3 @@
-Aqui está o README ajustado para o Projeto Vox:
-
----
-
 # Projeto Vox
 
 ## Descrição
@@ -106,7 +102,3 @@ Certifique-se de que você tenha os seguintes pré-requisitos instalados:
 - **Listar Sócios**: `/api/socios.{_format}`
 - **Listar Sócios (Sem Formato)**: `/api/socios`
 - **Obter Sócio por ID (Sem Formato)**: `/api/socios/{id}`
-
----
-
-Se precisar de mais ajustes ou tiver dúvidas, estou à disposição!
